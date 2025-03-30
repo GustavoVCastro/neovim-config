@@ -445,7 +445,7 @@ nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocActionAsync('format')
+" command! -nargs=0 Format :call CocActionAsync('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call		 CocAction('fold', <f-args>)
@@ -567,7 +567,7 @@ command! -nargs=0 PrettierLog :CocCommand prettier.openOutput
 "autocmd FileType vim,tex,md let b:autoformat_retab=0
 "autocmd FileType vim,tex,md let b:autoformat_remove_trailing_spaces=0
 
-" Specific optimizations for Markdown files
+" Markdown optimizations --------------------------------------------------------------------------
 augroup MarkdownOptimize
 	autocmd!
 	" Disable certain features for large markdown files
@@ -582,13 +582,12 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
-" LUA: Treesitter ---------------------------------------------------------------------------------------
+" LUA: Treesitter ---------------------------------------------------------------------------------
 " IMPORTANT: Configuration MUST be done in Lua
 lua require('treesitter')
 
-" LUA: Concform -----------------------------------------------------------------------------------------
+" LUA: Concform -----------------------------------------------------------------------------------
 " IMPORTANT: Configuration MUST be done in Lua
 lua require('conform-settings')
 
-" Optional: Create a keymap for manual formatting (conform also provides :Format command)
-nnoremap fm :Format<CR>
+nnoremap fm :lua require("conform").format()<CR>
