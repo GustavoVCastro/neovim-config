@@ -1,0 +1,12 @@
+{
+	"useTabs": true,
+	"tabWidth": 4,
+	"overrides": [
+		{
+			"files": ["*.html", "legacy/**/*.js"],
+			"options": {
+				"tabWidth": 4
+			}
+		}
+	]
+}
